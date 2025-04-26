@@ -3,10 +3,6 @@ const apis = express.Router();
 const User = require('./Models/user');
 const Chat = require('./Models/chat');
 
-apis.get('/test', (req, res) => {
-    res.json("test");
-})
-
 apis.post('/new-user', async (req, res) => {
     const userInfo = req.body;
 

@@ -19,12 +19,6 @@ app.use('/', apis);
 
 const server = http.createServer(app);
 const io = socket.init(server);
-// const io = socketIO(server, {
-//     cors: {
-//         origin: "http://localhost:3000/",
-//         methods: ["GET", "POST"],
-//     }
-// })
 
 io.on('connection', (socket) => {
     console.log("User connected::", socket.id);
@@ -62,12 +56,11 @@ io.on('connection', (socket) => {
                 break;
             }
         }
-        console.log("list connected rest: ", users);
+        // console.log("list connected rest: ", users);
         io.emit("onlineUsers", users);
     });
 })
 
 server.listen(process.env.PORT, () => {
     console.log(`Socket.IO + Express server running on port: ${process.env.PORT}`);
-    // console.log(users);
 })
