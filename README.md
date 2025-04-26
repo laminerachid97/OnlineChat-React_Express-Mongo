@@ -57,7 +57,3 @@ A real-time chat application built using modern web technologies.
 ## Contributing
 
 Contributions are welcome! Feel free to submit a pull request or open an issue.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
