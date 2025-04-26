@@ -39,7 +39,7 @@ A real-time chat application built using modern web technologies.
     ```bash
     # Start the backend server
     cd ../server
-    npm start
+    node server.js
 
     # Start the frontend server
     cd ../client
@@ -52,7 +52,7 @@ A real-time chat application built using modern web technologies.
 
 - **/client**: Contains the React.js frontend code.
 - **/server**: Contains the Express.js backend code.
-- **/database**: MongoDB configuration and models.
+- **/server/Models**: MongoDB configuration and models.
 
 ## Contributing
 
