@@ -15,7 +15,7 @@ apis.post('/new-user', async (req, res) => {
                     res.status(200).json({ message: `new user saved ${user._id}`, id: user._id, name: user.name });
                 });
         } else {
-            res.status(404).json({ message: `no user exist` });
+            res.status(200).json({ message: `no user exist` });
         }
     } catch (error) {
         console.error(error.message);
@@ -34,10 +34,10 @@ apis.post('/login', async (req, res) => {
             if (isMatch) {
                 res.status(200).json({ message: user });
             } else {
-                res.status(404).json({ message: "password incorrect" });
+                res.status(200).json({ message: "password incorrect" });
             }
         } else {
-            res.status(404).json({ message: "email incorrect" });
+            res.status(200).json({ message: "email incorrect" });
         }
     } catch (error) {
         console.error(error.message);
