@@ -26,17 +26,22 @@ apis.post('/new-user', async (req, res) => {
 apis.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email: email })
+    try {
+        const user = await User.findOne({ email: email })
 
-    if (user) {
-        const isMatch = await user.verifyPassword(password);
-        if (isMatch) {
-            res.status(200).json({ message: user });
+        if (user) {
+            const isMatch = await user.verifyPassword(password);
+            if (isMatch) {
+                res.status(200).json({ message: user });
+            } else {
+                res.status(404).json({ message: "password incorrect" });
+            }
         } else {
-            res.status(404).json({ message: "password incorrect" });
+            res.status(404).json({ message: "email incorrect" });
         }
-    } else {
-        res.status(404).json({ message: "email incorrect" });
+    } catch (error) {
+        console.error(error.message);
+        res.status(404).json({ message: error.message });
     }
 })
 
@@ -64,8 +69,8 @@ apis.get('/get-messages', async (req, res) => {
 
     try {
         const lenMessages = await Chat.find()
-        .sort({ _id: -1 })  // descending order (newest first)
-        .limit(20);
+            .sort({ _id: -1 })  // descending order (newest first)
+            .limit(20);
         res.status(200).json({ message: lenMessages.reverse() });
     } catch (error) {
         console.error(error.message);
